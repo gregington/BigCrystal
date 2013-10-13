@@ -19,13 +19,15 @@ public:
   BigCrystal(uint8_t rs, uint8_t enable,
 		uint8_t d0, uint8_t d1, uint8_t d2, uint8_t d3);
 
-  uint8_t bigWidth(char c);
-  uint8_t bigWrite(char c, uint8_t col, uint8_t row);
+  uint8_t widthBig(char c);
+  uint8_t writeBig(char c, uint8_t col, uint8_t row);
 private:
   void init();
-  int8_t getSpecialIndex(char c);
-  void bigWriteRegular(char c, uint8_t col, uint8_t row);
-  void bigWriteSpecial(uint8_t index, uint8_t col, uint8_t row, uint8_t width);
+  uint8_t getWidthFromTableCode(uint8_t tableCode);
+  uint8_t* getTable(uint8_t tableCode);
+  void getTableCodeAndIndex(char c, uint8_t &tableCode, uint8_t &index);
   void clearColumn(uint8_t row, uint8_t col);
+  char toUpperCase(char c);
+  bool supported(char c);
 };
 #endif

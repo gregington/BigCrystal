@@ -17,7 +17,7 @@ void loop() {
     // characters are removed
     clear();
 
-    lcd.bigWrite(c, 0, 0);
+    lcd.writeBig(c, 0, 0);
     lcd.setCursor(7, 0);
     lcd.write(c);
     delay(1000);

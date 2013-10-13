@@ -15,10 +15,21 @@
 //*	http://www.arduino.cc/cgi-bin/yabb2/YaBB.pl?num=1265696343
 //************************************************************************
 
+#define BF_NOT_SUPPORTED 0
+#define BF_WIDTH1_TABLE 0x01
+#define BF_WIDTH2_TABLE 0x02
+#define BF_WIDTH3_TABLE 0x03
+#define BF_WIDTH4_TABLE 0x04
+#define BF_WIDTH5_TABLE 0x05
+#define BF_WIDTH3_SYMBOLS_TABLE 0x06
 
-extern uint8_t	gBigFontShapeTable[64] PROGMEM;
+extern uint8_t BF_fontShapes[64] PROGMEM;
+extern uint8_t BF_characters[59] PROGMEM;
+extern uint8_t BF_width1[18] PROGMEM;
+extern uint8_t BF_width2[8] PROGMEM;
+extern uint8_t BF_width3[180] PROGMEM;
+extern uint8_t BF_width3Symbols[18] PROGMEM;
+extern uint8_t BF_width4[24] PROGMEM;
+extern uint8_t BF_width5[20] PROGMEM;
 
-extern uint8_t	gBigFontAsciiTable[354] PROGMEM;
-
-extern uint8_t	gBigFontAsciiTableWide[50] PROGMEM;
 #endif
