@@ -1,0 +1,19 @@
+#######################################
+# Syntax Coloring Map For BigCrystal
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+BigCrystal	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+widthBig	KEYWORD2
+writeBig	KEYWORD2
+printBig	KEYWORD2
+
+
