@@ -91,6 +91,16 @@ uint8_t BigCrystal::writeBig(char c, uint8_t col, uint8_t row) {
   return width + 1; // add one for the cleared column
 }
 
+uint8_t BigCrystal::printBig(char *str, uint8_t col, uint8_t row) {
+  uint8_t width = 0;
+  char *c = str;
+  while (*c != '\0') {
+    width += writeBig(*c, col + width, row);
+    *c++;
+  }
+  return width;
+}
+
 void BigCrystal::getTableCodeAndIndex(char c, uint8_t& tableCode, uint8_t& index) {
   uint8_t tableAndIndex = pgm_read_byte_near(BF_characters + c - ' ');
   // Top 3 bits are the table, bottom 5 are index into table
