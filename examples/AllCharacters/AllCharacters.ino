@@ -1,5 +1,3 @@
-#include <Arduino.h>
-#include <BigFont.h>
 #include <BigCrystal.h>
 #include <LiquidCrystal.h>
 

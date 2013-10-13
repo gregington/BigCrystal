@@ -1,7 +1,6 @@
 #ifndef BigCrystal_h
 #define BigCrystal_h
 
-#include "BigCrystal.h"
 #include "BigFont.h"
 #include <Arduino.h>
 #include <LiquidCrystal.h>
