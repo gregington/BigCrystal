@@ -19,6 +19,11 @@ public:
   BigCrystal(uint8_t rs, uint8_t enable,
 		uint8_t d0, uint8_t d1, uint8_t d2, uint8_t d3);
 
+  /* Returns the width in columns of the specified character.
+   * If the character cannot be printed big, then zero is returned.
+   * Parameters:
+   *  c: the character whose width is required
+   */
   uint8_t widthBig(char c);
   uint8_t writeBig(char c, uint8_t col, uint8_t row);
 private:

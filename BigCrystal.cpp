@@ -27,6 +27,9 @@ BigCrystal::BigCrystal(uint8_t rs,  uint8_t enable,
   init();
 }
 
+/* Creates custom font shapes for LCD characters 0 through to 7
+ * used in displaying big fonts
+ */
 void BigCrystal::init() {
   for (int i = 0; i < 8; i++) {
     uint8_t customChar[8];
@@ -35,6 +38,24 @@ void BigCrystal::init() {
     }
     createChar(i, customChar);
   }
+}
+
+uint8_t BigCrystal::widthBig(char c) {
+  if (!supported(c)) {
+    return 0; // we don't support characters outside this range
+  }
+  char ch = toUpperCase(c);
+
+  uint8_t tableCode;
+  uint8_t index;
+  getTableCodeAndIndex(ch, tableCode, index);
+
+  uint8_t width = getWidthFromTableCode(tableCode);
+  if (width == 0) {
+    return 0;
+  }
+
+  return width + 1; // add one for space after character
 }
 
 uint8_t BigCrystal::writeBig(char c, uint8_t col, uint8_t row) {
@@ -68,19 +89,6 @@ uint8_t BigCrystal::writeBig(char c, uint8_t col, uint8_t row) {
   clearColumn(col + width, row);
 
   return width + 1; // add one for the cleared column
-}
-
-uint8_t BigCrystal::widthBig(char c) {
-    if (!supported(c)) {
-    return 0; // we don't support characters outside this range
-  }
-  char ch = toUpperCase(c);
-
-  uint8_t tableCode;
-  uint8_t index;
-  getTableCodeAndIndex(ch, tableCode, index);
-
-  return getWidthFromTableCode(tableCode) + 1; // add one for space after character
 }
 
 void BigCrystal::getTableCodeAndIndex(char c, uint8_t& tableCode, uint8_t& index) {
