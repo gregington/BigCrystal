@@ -5,16 +5,48 @@
 #include <Arduino.h>
 #include <LiquidCrystal.h>
 
+/* Class that displays text on a Hitachi HD44780 compatible display. As well
+ * as displaying standard text, doubli height characters can also be displayed.
+ */
 class BigCrystal : public LiquidCrystal {
 public:
+  /* Creates a BigCrystal instance.
+   * Parameters:
+   *        rs: the Arduino pin that is connected to the RS pin on the display.
+   *    enable: the Arduino pin that is connected to the enable pin on the display.
+   *   d4 - d7: the Arduino pins connected to pins d4 to d7 on the display.
+   */
   BigCrystal(uint8_t rs, uint8_t enable,
 		uint8_t d0, uint8_t d1, uint8_t d2, uint8_t d3,
 		uint8_t d4, uint8_t d5, uint8_t d6, uint8_t d7);
+
+  /* Creates a BigCrystal instance.
+   * Parameters:
+   *        rs: the Arduino pin that is connected to the RS pin on the display.
+   *        rw: the Arduino pin that is connected to the RW pin on the display.
+   *    enable: the Arduino pin that is connected to the enable pin on the display.
+   *   d4 - d7: the Arduino pins connected to pins d4 to d7 on the display.
+   */
   BigCrystal(uint8_t rs, uint8_t rw, uint8_t enable,
 		uint8_t d0, uint8_t d1, uint8_t d2, uint8_t d3,
 		uint8_t d4, uint8_t d5, uint8_t d6, uint8_t d7);
+
+  /* Creates a BigCrystal instance.
+   * Parameters:
+   *        rs: the Arduino pin that is connected to the RS pin on the display.
+   *        rw: the Arduino pin that is connected to the RW pin on the display.
+   *    enable: the Arduino pin that is connected to the enable pin on the display.
+   *   d0 - d7: the Arduino pins connected to pins d0 to d7 on the display.
+   */
   BigCrystal(uint8_t rs, uint8_t rw, uint8_t enable,
 		uint8_t d0, uint8_t d1, uint8_t d2, uint8_t d3);
+
+  /* Creates a BigCrystal instance.
+   * Parameters:
+   *        rs: the Arduino pin that is connected to the RS pin on the display.
+   *    enable: the Arduino pin that is connected to the enable pin on the display.
+   *   d0 - d7: the Arduino pins connected to pins d0 to d7 on the display.
+   */
   BigCrystal(uint8_t rs, uint8_t enable,
 		uint8_t d0, uint8_t d1, uint8_t d2, uint8_t d3);
 
