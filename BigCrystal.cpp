@@ -31,9 +31,9 @@ BigCrystal::BigCrystal(uint8_t rs,  uint8_t enable,
  * used in displaying big fonts
  */
 void BigCrystal::init() {
-  for (int i = 0; i < 8; i++) {
+  for (uint8_t i = 0; i < 8; i++) {
     uint8_t customChar[8];
-    for (int j = 0; j < 8; j++) {
+    for (uint8_t j = 0; j < 8; j++) {
       customChar[j] = pgm_read_byte(BF_fontShapes + (i * 8) + j);
     }
     createChar(i, customChar);
@@ -75,13 +75,13 @@ uint8_t BigCrystal::writeBig(char c, uint8_t col, uint8_t row) {
 
   // Write first row
   setCursor(col, row);
-  for (int i = 0; i < width; i++) {
+  for (uint8_t i = 0; i < width; i++) {
     write(pgm_read_byte_near(table + tableOffset + i));
   }
 
   // Write second row
   setCursor(col, row + 1);
-  for (int i = 0; i < width; i++) {
+  for (uint8_t i = 0; i < width; i++) {
     write(pgm_read_byte_near(table + tableOffset + width + i));
   }
 
