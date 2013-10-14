@@ -69,6 +69,9 @@ uint8_t BigCrystal::writeBig(char c, uint8_t col, uint8_t row) {
   getTableCodeAndIndex(ch, tableCode, index);
 
   uint8_t* table = getTable(tableCode);
+  if (table == NULL) {
+    return 0;
+  }
   uint8_t width = getWidthFromTableCode(tableCode);
 
   int tableOffset = (width * 2) * index;
