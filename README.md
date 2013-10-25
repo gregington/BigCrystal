@@ -26,7 +26,11 @@ LiquidCrystal libraries.
 Usage
 -----
 
-BigCrystal is implemented as a wrapper around an LCD object, created using either the standard or new LiquidCrystal libraries. The lcd object is passed through to the BigCrystal constructor.
+You must install the BigCrystal library into your Arduino library directory. Optionally, you
+can remove the standard LiquidCrystal library and replace it with the New LiquidCrystal library.
+
+BigCrystal is implemented as a wrapper around an LCD object, created using either the standard or
+new LiquidCrystal libraries. The lcd object is passed through to the BigCrystal constructor.
 
 BigCrystal exposes all LiquidCrystal public methods and delegates to the underlying object. This
 means that once the BigCrytal object is created, you just need to reference that instance instead
