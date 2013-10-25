@@ -2,10 +2,11 @@
 #include <LiquidCrystal.h>
 
 // Set up according to your LCD pins
-BigCrystal lcd(22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32);
+LiquidCrystal lcd(22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32);
+BigCrystal bigCrystal(&lcd);
 
 void setup() {
-  lcd.begin(20, 4); // Set to your LCD size
+  bigCrystal.begin(20, 4); // Set to your LCD size
 }
 
 void loop() {
@@ -15,18 +16,18 @@ void loop() {
     // characters are removed
     clear();
 
-    lcd.writeBig(c, 0, 0);
-    lcd.setCursor(7, 0);
-    lcd.write(c);
+    bigCrystal.writeBig(c, 0, 0);
+    bigCrystal.setCursor(7, 0);
+    bigCrystal.write(c);
     delay(1000);
   }
 }
 
 void clear() {
   for (int i = 0; i < 5; i++) {
-    lcd.setCursor(i, 0);
-    lcd.print(' ');
-    lcd.setCursor(i, 1);
-    lcd.print(' ');
+    bigCrystal.setCursor(i, 0);
+    bigCrystal.print(' ');
+    bigCrystal.setCursor(i, 1);
+    bigCrystal.print(' ');
   }
 }

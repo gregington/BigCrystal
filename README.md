@@ -1,26 +1,38 @@
 BigCrystal
 ==========
 
-Arduino Library for displaying double height characters on an LCD display.
+Arduino Library for displaying double height characters on an LCD display. This library is
+compatible with the standard LiquidCrystal library dictributed with the Arduino IDE and
+also with the [New LiquidCrystal](https://bitbucket.org/fmalpartida/new-liquidcrystal/wiki/Home)
+which is a drop in replacement for the standard library.
 
-A corresponding library, [BigCrystalTWI](https://github.com/gregington/BigCrystalTWI)
-is available to use if connecting the LCD using I<sup>2</sup>C.
+The New LiquidCrystal library supports connections to LCDs using
+* 4 bit parallel interface
+* 8 bit parallel interface
+* I<sup>2</sup>C expansion boards
+* Shift registers
+
+Note that this version of the library is incompatible with version 1 to implement compatibility
+with the New LiquidCrystal library.
+
+Contributors
+------------
+Thanks to Bill Perry who reviewed the original code and suggested I base this library on
+the New LiquidCrystal library by F. Malpartida. Thak you also to Tim Eckel who wrote the
+[LCDBitmap](http://code.google.com/p/arduino-lcd-bitmap/) library whose code gave me insight
+on how to make this library compatible with both the standard LiquidCrystal and New
+LiquidCrystal libraries.
 
 Usage
 -----
 
-To use BigCrystal, the sketch will need the following includes:
+BigCrystal is implemented as a wrapper around an LCD object, created using either the standard or new LiquidCrystal libraries. The lcd object is passed through to the BigCrystal constructor.
 
-    #include <LiquidCrystal.h>
-    #include <BigCrystal.h>
+BigCrystal exposes all LiquidCrystal public methods and delegates to the underlying object. This
+means that once the BigCrytal object is created, you just need to reference that instance instead
+of using both the BigCrystal instance and the underling LiquidCrystal instance.
 
-Creating the LCD object is similar to the [LiquidCrystal library](https://github.com/Stephanie-Maks/Arduino-LiquidTWI);
-the pin numbers on the Arduino that connect to the LCD need to be specified.
-All constructors available in LiquidCrystal are available in BigCrystal. For example:
-
-    BigCrystal lcd(22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32);
-
-The following methods, in addition to those in LiquidTWI are available:
+The following methods are available to display double height characters:
 * writeBig(char c, uint8_t row, uint8_t col) - writes a single large character to the specified coordinates.
 * printBig(char* str, uint8_t row, uint8_t col) - writes a String to the specified coordinates.
 * widthBig(char c) - returns the width in characters of the specified large character.

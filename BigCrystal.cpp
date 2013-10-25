@@ -1,42 +1,26 @@
 #include "BigFont.h"
 #include "BigCrystal.h"
 
-BigCrystal::BigCrystal(uint8_t rs, uint8_t rw, uint8_t enable,
-    uint8_t d0, uint8_t d1, uint8_t d2, uint8_t d3,
-    uint8_t d4, uint8_t d5, uint8_t d6, uint8_t d7) :
-    LiquidCrystal(rs, rw, enable, d0, d1, d2, d3, d4, d5, d6, d7) {
-  init();
+#ifndef LiquidCrystal_h // New liquid crystal library
+BigCrystal::BigCrystal(LCD *display) {
+#else                   // Standard library
+BigCrystal::BigCrystal(LiquidCrystal *display) {
+#endif
+  _display = display;
+  createCustomChars();
 }
 
-BigCrystal::BigCrystal(uint8_t rs, uint8_t enable,
-    uint8_t d0, uint8_t d1, uint8_t d2, uint8_t d3,
-    uint8_t d4, uint8_t d5, uint8_t d6, uint8_t d7) :
-    LiquidCrystal(rs, enable, d0, d1, d2, d3, d4, d5, d6, d7) {
-  init();
-}
-
-BigCrystal::BigCrystal(uint8_t rs, uint8_t rw, uint8_t enable,
-    uint8_t d0, uint8_t d1, uint8_t d2, uint8_t d3) :
-    LiquidCrystal(rs, rw, enable, d0, d1, d2, d3) {
-  init();
-}
-
-BigCrystal::BigCrystal(uint8_t rs,  uint8_t enable,
-    uint8_t d0, uint8_t d1, uint8_t d2, uint8_t d3) :
-    LiquidCrystal(rs, enable, d0, d1, d2, d3) {
-  init();
-}
 
 /* Creates custom font shapes for LCD characters 0 through to 7
  * used in displaying big fonts
  */
-void BigCrystal::init() {
+void BigCrystal::createCustomChars() {
   for (uint8_t i = 0; i < 8; i++) {
     uint8_t customChar[8];
     for (uint8_t j = 0; j < 8; j++) {
       customChar[j] = pgm_read_byte(BF_fontShapes + (i * 8) + j);
     }
-    createChar(i, customChar);
+    _display->createChar(i, customChar);
   }
 }
 
