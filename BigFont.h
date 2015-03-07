@@ -23,13 +23,13 @@
 #define BF_WIDTH5_TABLE 0x05
 #define BF_WIDTH3_SYMBOLS_TABLE 0x06
 
-extern uint8_t BF_fontShapes[64] PROGMEM;
-extern uint8_t BF_characters[59] PROGMEM;
-extern uint8_t BF_width1[18] PROGMEM;
-extern uint8_t BF_width2[8] PROGMEM;
-extern uint8_t BF_width3[180] PROGMEM;
-extern uint8_t BF_width3Symbols[18] PROGMEM;
-extern uint8_t BF_width4[24] PROGMEM;
-extern uint8_t BF_width5[20] PROGMEM;
+const extern uint8_t BF_fontShapes[64] PROGMEM;
+const extern uint8_t BF_characters[59] PROGMEM;
+const extern uint8_t BF_width1[18] PROGMEM;
+const extern uint8_t BF_width2[8] PROGMEM;
+const extern uint8_t BF_width3[180] PROGMEM;
+const extern uint8_t BF_width3Symbols[18] PROGMEM;
+const extern uint8_t BF_width4[24] PROGMEM;
+const extern uint8_t BF_width5[20] PROGMEM;
 
 #endif
