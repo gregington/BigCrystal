@@ -52,7 +52,7 @@ uint8_t BigCrystal::writeBig(char c, uint8_t col, uint8_t row) {
   uint8_t index;
   getTableCodeAndIndex(ch, tableCode, index);
 
-  uint8_t* table = getTable(tableCode);
+  const uint8_t* table = getTable(tableCode);
   if (table == NULL) {
     return 0;
   }
@@ -95,7 +95,7 @@ void BigCrystal::getTableCodeAndIndex(char c, uint8_t& tableCode, uint8_t& index
   index = (uint8_t) (tableAndIndex & 0x1F);
 }
 
-uint8_t* BigCrystal::getTable(uint8_t tableCode) {
+const uint8_t* BigCrystal::getTable(uint8_t tableCode) {
   switch (tableCode) {
     case BF_WIDTH1_TABLE:
       return BF_width1;
