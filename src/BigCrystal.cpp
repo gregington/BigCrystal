@@ -7,9 +7,10 @@ BigCrystal::BigCrystal(LCD *display) {
 BigCrystal::BigCrystal(LiquidCrystal *display) {
 #endif
   _display = display;
+  #ifndef LiquidCrystal_h 
   createCustomChars();
+  #endif
 }
-
 
 /* Creates custom font shapes for LCD characters 0 through to 7
  * used in displaying big fonts
