@@ -7,7 +7,7 @@ BigCrystal::BigCrystal(LCD *display) {
 BigCrystal::BigCrystal(LiquidCrystal *display) {
 #endif
   _display = display;
-  #ifndef LiquidCrystal_h 
+  #ifdef LiquidCrystal_h 
   createCustomChars();
   #endif
 }
