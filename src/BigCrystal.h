@@ -76,6 +76,9 @@ public:
   /* Delegate methods to underlying LCD instance */
   inline void begin(uint8_t cols, uint8_t rows, uint8_t charsize = LCD_5x8DOTS) {
     _display->begin(cols, rows, charsize);
+    #ifndef LiquidCrystal_h 
+    createCustomChars();
+    #endif
   }
   inline void clear() { _display->clear(); }
   inline void home() { _display->home(); }
