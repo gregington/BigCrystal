@@ -96,7 +96,7 @@ public:
   inline void noAutoscroll() { _display->noAutoscroll(); }
   inline void createChar(uint8_t location, uint8_t charmap[]) { _display->createChar(location, charmap); }
   inline void setCursor(uint8_t col, uint8_t row) { _display->setCursor(col, row); }
-  inline virtual size_t write(uint8_t value) { _display->write(value); }
+  inline virtual size_t write(uint8_t value) { return _display->write(value); }
 
   using Print::write;
 private:

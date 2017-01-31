@@ -84,7 +84,7 @@ uint8_t BigCrystal::printBig(char *str, uint8_t col, uint8_t row) {
   char *c = str;
   while (*c != '\0') {
     width += writeBig(*c, col + width, row);
-    *c++;
+    c++;
   }
   return width;
 }
