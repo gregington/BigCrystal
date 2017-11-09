@@ -10,6 +10,7 @@ BigCrystal::BigCrystal(LiquidCrystal *display) {
   #ifdef LiquidCrystal_h 
   createCustomChars();
   #endif
+  appendExtraSpaceBetweenCharacters = true;
 }
 
 /* Creates custom font shapes for LCD characters 0 through to 7
@@ -40,7 +41,11 @@ uint8_t BigCrystal::widthBig(char c) {
     return 0;
   }
 
-  return width + 1; // add one for space after character
+  if(appendExtraSpaceBetweenCharacters) {
+    return width + 1; // add one for space after character
+  }
+
+  return width;
 }
 
 uint8_t BigCrystal::writeBig(char c, uint8_t col, uint8_t row) {
@@ -73,10 +78,14 @@ uint8_t BigCrystal::writeBig(char c, uint8_t col, uint8_t row) {
     write(pgm_read_byte_near(table + tableOffset + width + i));
   }
 
-  // Clear last column
-  clearColumn(col + width, row);
+  if(appendExtraSpaceBetweenCharacters) {
+    // Clear last column
+    clearColumn(col + width, row);
 
-  return width + 1; // add one for the cleared column
+    return width + 1; // add one for the cleared column
+  }
+
+  return width;
 }
 
 uint8_t BigCrystal::printBig(char *str, uint8_t col, uint8_t row) {
@@ -87,6 +96,10 @@ uint8_t BigCrystal::printBig(char *str, uint8_t col, uint8_t row) {
     c++;
   }
   return width;
+}
+
+void BigCrystal::setAppendExtraSpaceBetweenCharacters(bool append) {
+  appendExtraSpaceBetweenCharacters = append;
 }
 
 void BigCrystal::getTableCodeAndIndex(char c, uint8_t& tableCode, uint8_t& index) {

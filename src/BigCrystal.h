@@ -73,6 +73,15 @@ public:
    */
   uint8_t printBig(char *str, uint8_t col, uint8_t row);
 
+  /* Enable/disable the appending of one empty column after each character. To provide a backward
+   * compatibility, the column will be appended by default.
+   * Parameters:
+   *    append: a bool flag that indicates if the one empty column should be appended
+   * Returns:
+   *   void
+   */
+  void setAppendExtraSpaceBetweenCharacters(bool append);
+
   /* Delegate methods to underlying LCD instance */
   inline void begin(uint8_t cols, uint8_t rows, uint8_t charsize = LCD_5x8DOTS) {
     _display->begin(cols, rows, charsize);
@@ -112,6 +121,7 @@ private:
 #else
   LiquidCrystal *_display;
 #endif
+  bool appendExtraSpaceBetweenCharacters;
 
 };
 #endif
