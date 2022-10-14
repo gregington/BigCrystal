@@ -3,7 +3,7 @@ BigCrystal
 
 Arduino Library for displaying double height characters on an LCD display. This library is
 compatible with the standard LiquidCrystal library dictributed with the Arduino IDE and
-also with the [New LiquidCrystal](https://bitbucket.org/fmalpartida/new-liquidcrystal/wiki/Home)
+also with the [New LiquidCrystal](https://github.com/fmalpartida/New-LiquidCrystal) library,
 which is a drop in replacement for the standard library.
 
 The New LiquidCrystal library supports connections to LCDs using
